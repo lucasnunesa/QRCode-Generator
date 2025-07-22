@@ -1,33 +1,18 @@
-# QRCode-Generator
+# QR Code Generator
 O QR Code Generator é uma API desenvolvida em Java 21 com Spring Boot, responsável por gerar códigos QR utilizando a biblioteca ZXing (Google). Após a geração, os QR Codes são armazenados no Amazon S3.
 A aplicação segue uma arquitetura modular com separação clara entre camadas de controller, service, ports e infraestrutura, permitindo fácil manutenção e extensibilidade.
 
-Arquitetura
+# Arquitetura
 O projeto adota a Arquitetura Hexagonal (Ports & Adapters), promovendo baixo acoplamento e alta testabilidade.
 
-Camadas do projeto:
+# Camadas do projeto:
 Controller - Exposição da API via REST (Spring Web).
 DTO (records) - Objetos de requisição e resposta com record, promovendo imutabilidade e segurança no transporte de dados.
 Service - Contém as regras de negócio (geração de QR Code e integração com storage).
 Ports (interfaces) - Definem contratos de comunicação com sistemas externos (ex: StoragePort).
 Infrastructure - Implementação concreta das ports, como o S3StorageAdapter.
 
-Estrutura do Projeto
-├── controller
-│   └── QrCodeController.java      # Ponto de entrada da API REST
-├── dto
-│   ├── QrCodeGenerateRequest.java # DTO de requisição (texto para QR code, etc.)
-│   └── QrCodeGenerateResponse.java # DTO de resposta (URL do S3 ou base64)
-├── infrastructure
-│   └── S3StorageAdapter.java      # Implementação de upload para Amazon S3
-├── ports
-│   └── StoragePort.java           # Interface abstrata para storage
-├── service
-│   └── QrCodeGeneratorService.java# Regras de negócio: geração e armazenamento
-└── QrCodeGeneratorApplication.java# Classe principal (Spring Boot)
-
-Uso de Records e Interfaces
-
+# Uso de Records e Interfaces
 Records
 A aplicação utiliza records do Java 21 para representar DTOs e modelos simples, garantindo:
 - Imutabilidade
@@ -40,10 +25,10 @@ Essa abordagem facilita:
 - Testes unitários com mocks
 - Mudança de implementação sem impacto no core da aplicação
 
-Contêiner Docker
+# Contêiner Docker
 A aplicação foi preparada para ser executada em ambiente Docker, garantindo portabilidade e facilidade de deploy.
 
-Como Executar
+# Como Executar
 
 Pré-requisitos:
 - Java 21 instalado
@@ -57,5 +42,5 @@ Comandos:
 A API estará disponível em:
 http://localhost:8080/api/v1/qrcode
 
-Autor
+# Autor
 Desenvolvido por Lucas Nunes.
